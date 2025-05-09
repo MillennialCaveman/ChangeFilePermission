@@ -2,7 +2,6 @@ $Computers = Get-Content ComputerName
 ###"ComputerName"###
 #Get-Content -path C:\Computers.txt
 test-connection $Computers
-
 	foreach ($Computer in $Computers)
 	{
 	invoke-command -ComputerName $Computer -Scriptblock {
@@ -12,12 +11,3 @@ test-connection $Computers
 			$ACL | Set-Acl -path "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 														} 
 	}                          
-
-
-
-### This program is designed to change file permissions remotely. if you are running a large group of computers and need to, for example, change the read/write permissions on msedge you can run this powershell script to do so. 
-additionally you can run this on just a single computer. To run on a single computer, swap out "computername" with the name of the machine. If you want to run this on multiple machines, copy line three to the second half of line 1. 
-Create a .txt with every computer name (i.e. computername-1...)
-First this will run a test to see if the machine is reachable, then it will change the ACL on all available mahines. 
-This needs to be run in PS
-###
